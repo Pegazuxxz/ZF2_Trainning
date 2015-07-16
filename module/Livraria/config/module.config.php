@@ -1,4 +1,5 @@
 <?php
+namespace Livraria;
 
 return array(
     'router' => array(
@@ -13,11 +14,22 @@ return array(
                     ),
                 ),
             ),
+            'livraria-admin' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route'    => '/admin/[:controller[/:action][/page/:page]]',
+                    'defaults' => array(                   
+                        'action'  => 'index',
+                        'page'    => 1,   
+                    ),
+                ),
+            ),
         ),
     ),
     'controllers' => array(
         'invokables' => array(
-            'Livraria\Controller\Index' => 'Livraria\Controller\IndexController'
+            'Livraria\Controller\Index' => 'Livraria\Controller\IndexController',
+            'categorias' => 'LivrariaAdmin\Controller\CategoriasController'
         ),
     ),
     'view_manager' => array(
@@ -43,4 +55,23 @@ return array(
             ),
         ),
     ),
+    'doctrine' => array(
+        'driver' => array(
+            __NAMESPACE__ . '_driver' => array(
+                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                'cache' => 'array',
+                'paths' => array(__DIR__ . '/../src/'.__NAMESPACE__ .'/Entity')                
+            ),
+            'orm_default' => array(
+                'drivers' => array(
+                    __NAMESPACE__ .'\Entity' => __NAMESPACE__ .'_driver'
+                    
+                ),
+                
+            ),
+            
+        ),
+    ),
+    
+    
 );

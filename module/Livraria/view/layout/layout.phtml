@@ -47,7 +47,7 @@
             <?php echo $this->content; ?>
             <hr>
             <footer>
-                <p>&copy; 2005 - <?php echo date('Y') ?> by Zend Technologies Ltd. <?php echo 'School of Net' ?></p>
+                <p>&copy; 2005 - <?php date_default_timezone_set("America/Sao_Paulo"); echo date('Y'); ?> by Zend Technologies Ltd. <?php echo 'School of Net' ?></p>
             </footer>
         </div> <!-- /container -->
         <?php echo $this->inlineScript() ?>
