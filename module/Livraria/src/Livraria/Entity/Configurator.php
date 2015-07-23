@@ -23,12 +23,22 @@ class Configurator {
         
         foreach ($options as $name => &$value)
         {
+            $setter = 'set' . str_replace(' ','',  ucwords(str_replace('_',' ',$name)));
             
-            
-            
+            if($tryCall || method_exists($target, $setter))
+            {
+                call_user_func(array($target,$setter),$value);
+                
+            }
+            else
+            {
+                continue;
+                
+            }
+                        
         }
         
-        
+        return $target;
         
         
     }

@@ -1,17 +1,12 @@
 <?php
-/**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- */
 
 namespace Livraria;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+
 use Livraria\Model\CategoriaTable;
+use Livraria\Service\Categoria as CategoriaService;
 
 class Module
 {
@@ -43,8 +38,13 @@ class Module
 				$categoriaService = new Model\CategoriaService($categoriaTable);
 
 				return $categoriaService;
-			}
+			},
+                        'Livraria\Service\Categoria' => function($service){
+                    
+                                return new CategoriaService($service->get('Doctrine\ORM\EntityManager'));
+                        }
 		),
+                
 	);
     }
 }

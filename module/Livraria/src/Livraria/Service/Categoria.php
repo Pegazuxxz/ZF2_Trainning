@@ -4,25 +4,17 @@
 namespace Livraria\Service;
 
 use Doctrine\ORM\EntityManager;
-use Livraria\Entity\Categoria;
+use Livraria\Entity\Categoria as CategoriaService;
+use Livraria\Entity\Configurator;
 
-class Categoria {
+class Categoria extends AbstractService {
     
-    /**
-     * @var EntityManager
-     */
-    protected $em;
+   
     
     public function __construct(EntityManager $em) {
-        
-        $this->em = $em;        
+        parent::__construct($em);
+        $this->entity = "Livraria\Entity\Categoria";
     }
-    
-    public function insert(array $data)
-    {
-        $entity = new Categoria($data);
-    }
-    
     
     
 
