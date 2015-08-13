@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="Categoria")
+ * @ORM\Table(name="categorias")
  * @ORM\Entity(repositoryClass="Livraria\Entity\CategoriaRepository")
  */
 class Categoria {
@@ -23,18 +23,18 @@ class Categoria {
     
     
     /**
-     * 
      * @ORM\Column(type="text")
      * @var string
      */
     protected $nome;
     
     /**
-     * @ORM\OneToMany(targetEntity="Livraria\Entity\Livro",mappedBy="Categoria")
-     * 
+     * @ORM\OneToMany(targetEntity="Livraria\Entity\Livro",mappedBy="categoria")
      */
-    
-    protected $livros;
+    protected $livro;
+
+
+
 
 
     public function __construct($options = null) {

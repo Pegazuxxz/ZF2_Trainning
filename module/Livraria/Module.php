@@ -8,6 +8,7 @@ use Zend\Mvc\MvcEvent;
 use Livraria\Model\CategoriaTable;
 use Livraria\Service\Categoria as CategoriaService;
 use Livraria\Service\Livro as LivroService;
+use Livraria\Service\User as UserService;
 use LivrariaAdmin\Form\Livro as LivroFrm;
 
 class Module
@@ -48,6 +49,10 @@ class Module
                         'Livraria\Service\Livro' => function($service){
                     
                                 return new LivroService($service->get('Doctrine\ORM\EntityManager'));
+                        },
+                        'Livraria\Service\User' => function($service){
+
+                                return new UserService($service->get('Doctrine\ORM\EntityManager'));
                         },
                         'LivrariaAdmin\Form\Livro' => function($service){
                                 $em = $service->get('Doctrine\ORM\EntityManager');

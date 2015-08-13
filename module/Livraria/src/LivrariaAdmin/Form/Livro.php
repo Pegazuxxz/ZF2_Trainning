@@ -8,7 +8,7 @@ class Livro extends Form{
   
     protected $categorias;
     
-    public function __construct($name = null,  array $categorias = null) {
+    public function __construct($name = null, array $categorias = null) {
         parent::__construct('livro');
         $this->categorias = $categorias;
         
@@ -35,7 +35,9 @@ class Livro extends Form{
             ),
         ));
         
-    
+      
+        
+        
         $categoria = new Select();
         $categoria->setLabel("Categoria")
                   ->setName("categoria")

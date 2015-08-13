@@ -20,6 +20,8 @@ class Livro extends AbstractService{
         
         $this->em->persist($entity);
         $this->em->flush();
+        
+        return $entity;
     }
     
     
@@ -33,7 +35,8 @@ class Livro extends AbstractService{
         
         $this->em->persist($entity);
         $this->em->flush();
-        
+     
+        return $entity;
     }
    
 }

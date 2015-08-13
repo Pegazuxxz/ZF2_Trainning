@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
  /**
   *@ORM\Entity
-  * @ORM\Table(Livros)
+  * @ORM\Table(name="livros")
   * @ORM\Entity(repositoryClass="Livraria\Entity\LivroRepository")
   */    
 class Livro {
@@ -27,7 +27,7 @@ class Livro {
     protected $nome;
     
      /**
-     * @ORM\ManyToOne(targetEntity="Livraria\Entity\Categoria",inversedBy="Livro")
+     * @ORM\ManyToOne(targetEntity="Livraria\Entity\Categoria",inversedBy="livro")
      * @ORM\JoinColumn(name="categoria_id",referencedColumnName="id")    
      */
     protected $categoria;
@@ -114,7 +114,7 @@ class Livro {
             'autor' => $this->getAutor(),
             'isbn' => $this->getIsbn(),
             'valor' => $this->getValor(),
-            'categoria' => $this->getCategoria() 
+            'categoria' => $this->getCategoria()->getId()
   
         );
         
