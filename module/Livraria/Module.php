@@ -9,6 +9,7 @@ use Livraria\Model\CategoriaTable;
 use Livraria\Service\Categoria as CategoriaService;
 use Livraria\Service\Livro as LivroService;
 use Livraria\Service\User as UserService;
+use Livraria\Auth\Adapter as AuthAdapter;
 use LivrariaAdmin\Form\Livro as LivroFrm;
 
 class Module
@@ -61,7 +62,11 @@ class Module
                                 $categorias = $repository->fetchPairs();
                     
                                 return new LivroFrm(null,$categorias);
-                        }
+                        },
+                        'Livraria\Auth\Adapter' => function($service){
+
+                                return new AuthAdapter($service->get('Doctrine\ORM\EntityManager'));
+                        },
 		),
                 
 	);

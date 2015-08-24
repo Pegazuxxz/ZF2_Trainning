@@ -268,12 +268,34 @@ class User extends \Livraria\Entity\User implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
+    public function getSalt()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSalt', array());
+
+        return parent::getSalt();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function toArray()
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'toArray', array());
 
         return parent::toArray();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function encryptPassword($password)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'encryptPassword', array($password));
+
+        return parent::encryptPassword($password);
     }
 
 }
